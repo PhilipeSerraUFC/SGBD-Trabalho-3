@@ -1,0 +1,14 @@
+C:\Users\O brabo\EscalonadorTimestamp\EscalonadorApp\bin\Debug\net8.0\EscalonadorApp.exe
+C:\Users\O brabo\EscalonadorTimestamp\EscalonadorApp\bin\Debug\net8.0\EscalonadorApp.deps.json
+C:\Users\O brabo\EscalonadorTimestamp\EscalonadorApp\bin\Debug\net8.0\EscalonadorApp.runtimeconfig.json
+C:\Users\O brabo\EscalonadorTimestamp\EscalonadorApp\bin\Debug\net8.0\EscalonadorApp.dll
+C:\Users\O brabo\EscalonadorTimestamp\EscalonadorApp\bin\Debug\net8.0\EscalonadorApp.pdb
+C:\Users\O brabo\EscalonadorTimestamp\EscalonadorApp\obj\Debug\net8.0\EscalonadorApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\O brabo\EscalonadorTimestamp\EscalonadorApp\obj\Debug\net8.0\EscalonadorApp.AssemblyInfoInputs.cache
+C:\Users\O brabo\EscalonadorTimestamp\EscalonadorApp\obj\Debug\net8.0\EscalonadorApp.AssemblyInfo.cs
+C:\Users\O brabo\EscalonadorTimestamp\EscalonadorApp\obj\Debug\net8.0\EscalonadorApp.csproj.CoreCompileInputs.cache
+C:\Users\O brabo\EscalonadorTimestamp\EscalonadorApp\obj\Debug\net8.0\EscalonadorApp.dll
+C:\Users\O brabo\EscalonadorTimestamp\EscalonadorApp\obj\Debug\net8.0\refint\EscalonadorApp.dll
+C:\Users\O brabo\EscalonadorTimestamp\EscalonadorApp\obj\Debug\net8.0\EscalonadorApp.pdb
+C:\Users\O brabo\EscalonadorTimestamp\EscalonadorApp\obj\Debug\net8.0\EscalonadorApp.genruntimeconfig.cache
+C:\Users\O brabo\EscalonadorTimestamp\EscalonadorApp\obj\Debug\net8.0\ref\EscalonadorApp.dll
