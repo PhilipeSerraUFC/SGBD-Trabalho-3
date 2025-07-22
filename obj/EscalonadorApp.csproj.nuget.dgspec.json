@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\O brabo\\EscalonadorTimestamp\\EscalonadorApp\\EscalonadorApp.csproj": {}
+    "C:\\Users\\phili\\Desktop\\Trabalho\\SGBD-Trabalho-3\\EscalonadorApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\O brabo\\EscalonadorTimestamp\\EscalonadorApp\\EscalonadorApp.csproj": {
+    "C:\\Users\\phili\\Desktop\\Trabalho\\SGBD-Trabalho-3\\EscalonadorApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\O brabo\\EscalonadorTimestamp\\EscalonadorApp\\EscalonadorApp.csproj",
+        "projectUniqueName": "C:\\Users\\phili\\Desktop\\Trabalho\\SGBD-Trabalho-3\\EscalonadorApp.csproj",
         "projectName": "EscalonadorApp",
-        "projectPath": "C:\\Users\\O brabo\\EscalonadorTimestamp\\EscalonadorApp\\EscalonadorApp.csproj",
-        "packagesPath": "C:\\Users\\O brabo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\O brabo\\EscalonadorTimestamp\\EscalonadorApp\\obj\\",
+        "projectPath": "C:\\Users\\phili\\Desktop\\Trabalho\\SGBD-Trabalho-3\\EscalonadorApp.csproj",
+        "packagesPath": "C:\\Users\\phili\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\phili\\Desktop\\Trabalho\\SGBD-Trabalho-3\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\O brabo\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\phili\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -37,7 +37,8 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        }
+        },
+        "SdkAnalysisLevel": "9.0.200"
       },
       "frameworks": {
         "net8.0": {
@@ -53,12 +54,30 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[8.0.15, 8.0.15]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[8.0.15, 8.0.15]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[8.0.15, 8.0.15]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[8.0.15, 8.0.15]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.409/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
