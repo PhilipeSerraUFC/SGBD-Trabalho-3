@@ -49,11 +49,11 @@ class Operation
     public string scheduler_id;
     public Data? data;
 
-    public Transaction transaction;
+    public Transaction? transaction;
     public Command command;
 
 
-    public Operation(string scheduler_id, Data? data, Transaction transaction, Command command)
+    public Operation(string scheduler_id, Data? data, Transaction? transaction, Command command)
     {
         this.scheduler_id = scheduler_id;
         this.data = data;
@@ -70,8 +70,11 @@ class Operation
         if (data == null)
             return false;
 
+        if (transaction == null)
+            return false;
+
         if (command == Command.READ)
-            return transaction.timestamp >= data.TS_Write;
+                return transaction.timestamp >= data.TS_Write;
 
         if (command == Command.WRITE)
             return (transaction.timestamp >= data.TS_Write) && (transaction.timestamp >= data.TS_Read);
@@ -103,6 +106,8 @@ class Operation
     public bool Apply(int time) //Retorna verdadeiro se concluiu e falso se exige RollBack
     {
         if (!this.IsValid()) return false;
+
+        if (transaction == null) return true; //Operação é um commit
 
 
         if (data == null) return true; //Desnecessario, pois se é valido, quer dizer que é um commit.
@@ -142,17 +147,19 @@ class Scheduler //Escalonamento
     public List<Operation> operations = [];
     public bool rollback = false;
     public int time = 0;
+    public List<Data> datas;
 
-    public Scheduler(string scheduler_id, List<Operation> operations)
+    public Scheduler(string scheduler_id, List<Operation> operations, List<Data> datas)
     {
         this.scheduler_id = scheduler_id;
         this.operations = operations;
+        this.datas = datas;
     }
 
     private void ResetData()
     {
-        foreach (Operation operation in this.operations)
-            operation.ResetData();
+        foreach (Data data in this.datas)
+            data.Reset();
 
     }
 
@@ -166,6 +173,9 @@ class Scheduler //Escalonamento
                 this.ResetData();
                 return;
             }
+
+            if (operation.command == Command.COMMIT)
+                this.ResetData();
             this.time++;
         }
 
@@ -205,7 +215,7 @@ class Program
         var transacoesLinha = linhas[1].Trim().TrimEnd(';');
         var transacoesIds = transacoesLinha.Split(',').Select(t => t.Trim()).ToList();
 
-        Console.WriteLine(transacoesIds);
+
 
         // 3. Timestamps
         var tsLinha = linhas[2].Trim().TrimEnd(';');
@@ -214,13 +224,17 @@ class Program
         for (int i = 0; i < transacoesIds.Count; i++)
         {
             transactions.Add(new Transaction(transacoesIds[i], timestamps[i]));
+
         }
+        
+        foreach(Transaction tr in transactions) Console.WriteLine(tr.transaction_id.Length);
 
         foreach (string objeto in objetos)
         {
-           datas.Add(new Data(objeto));
+            this.datas.Add(new Data(objeto));
 
         }
+
 
         // 4. Escalonamentos
         var escalonamentos = new List<string>();
@@ -261,16 +275,8 @@ class Program
                 if (token.StartsWith("c"))
                 {
                     // Commit operation
-                    string numTransacao = new string(token.Skip(1).TakeWhile(char.IsDigit).ToArray());
-                    string transacaoId = "t" + numTransacao;
+                    operacoesList.Add(new Operation(idEscalonamento, null, null, Command.COMMIT));
 
-                    Transaction? transaction = transactions.Find(x => x.transaction_id == transacaoId);
-                    if (transaction != null)
-                        operacoesList.Add(new Operation(idEscalonamento, null, transaction, Command.COMMIT));
-                    else
-                    {
-                        throw new Exception("Tentando Escalonar uma Transação não indentificada!");
-                    }
                 }
                 else
                 {
@@ -290,6 +296,8 @@ class Program
                     string numTransacao = new string(token.Skip(1).TakeWhile(char.IsDigit).ToArray());
                     string transacaoId = "t" + numTransacao;
 
+                    Console.WriteLine("dsxaixo " + transacaoId);
+
                     Transaction? transaction = transactions.Find(x => x.transaction_id == transacaoId);
                     if (transaction == null)
                         throw new Exception("Tentando Escalonar uma Transação não indentificada!");
@@ -306,8 +314,8 @@ class Program
                         throw new Exception("Tentando Ler/Escrever um objeto inexistente");
                 }
             }
-
-            this.schedulers.Add(new Scheduler(idEscalonamento, operacoesList));
+        
+            this.schedulers.Add(new Scheduler(idEscalonamento, operacoesList, datas));
         }
 
 
@@ -339,9 +347,9 @@ class Program
 
     public void Run()
     {
-        foreach (Data data in datas) File.WriteAllText(data.data_id + ".txt", string.Empty);
         const string data_path = "in.txt";
         this.Parser(data_path);
+        foreach (Data data in this.datas) File.WriteAllText(data.data_id + ".txt", string.Empty);
         this.ExecuteSchedulers();
     }
 

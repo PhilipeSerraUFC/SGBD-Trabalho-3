@@ -1,0 +1,14 @@
+E_3, Read, 6
+E_3, Write, 7
+E_3, Read, 8
+E_4, Read, 6
+E_4, Write, 7
+E_4, Read, 8
+E_4, Write, 9
+E_4, Write, 11
+E_5, Read, 6
+E_5, Write, 7
+E_5, Read, 8
+E_5, Write, 9
+E_5, Write, 11
+E_5, Write, 13
